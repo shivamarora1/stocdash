@@ -1,0 +1,3 @@
+<div class="container">
+  <app-container *ngFor="let item of availableOptions | keyvalue" [heading]="item.key" [value]="item.value"></app-container>
+</div>
