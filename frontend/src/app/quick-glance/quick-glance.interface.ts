@@ -1,0 +1,1 @@
+export type QuickGlanceOptions = Record<string,string>;

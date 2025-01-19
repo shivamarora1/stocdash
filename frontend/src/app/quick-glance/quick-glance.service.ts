@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
+import { QuickGlanceOptions } from './quick-glance.interface'
 @Injectable({
   providedIn: 'root',
 })
 export class QuickGlanceService {
-  constructor(private httpClient: HttpClient) {}
-  callFunc() {
-    console.log('Call Func');
-    this.httpClient
-      .get('https://cdn.jsdelivr.net/gh/prebid/currency-file@1/latest.json')
-      .subscribe((data) => console.log(data));
+  BASE_URL = environment.API_URL;
+  constructor(private httpClient: HttpClient) { }
+  getOptions(): Observable<QuickGlanceOptions> {
+    return this.httpClient.get<QuickGlanceOptions>(`${environment.API_URL}/stocks/options`);
   }
 }
