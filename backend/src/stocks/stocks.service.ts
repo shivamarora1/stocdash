@@ -9,6 +9,11 @@ export const BS_NIFTY = 'in;NSX';
 export class StocksService {
   constructor(private readonly httpService: HttpService) {}
 
+  getGoldRate(): Promise<AxiosResponse<any>> {
+    return this.httpService.axiosRef.get(
+      `https://www.malabargoldanddiamonds.com/malabarprice/index/getrates/?country=IN&state=Punjab`,
+    );
+  }
   getIndianIndicesFeed(indicesName: string): Promise<AxiosResponse<any>> {
     indicesName = encodeURIComponent(indicesName);
     return this.httpService.axiosRef.get(

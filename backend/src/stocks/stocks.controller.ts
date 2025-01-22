@@ -26,10 +26,11 @@ export class StocksController {
     const currencyRes = await this.stockService.getCurrencyRates();
     const niftyRes = await this.stockService.getIndianIndicesFeed(BS_NIFTY);
     const sensexRes = await this.stockService.getIndianIndicesFeed(BS_SENSEX);
+    const goldRate = await this.stockService.getGoldRate();
 
     const response: any = {
-      'Gold (22K)': '1gm = ₹ 77,409.34',
-      'Gold (24K)': '1gm = ₹ 83,000,34',
+      'Gold (22K)': `1gm = ₹ ${goldRate['22kt']}`,
+      'Gold (24K)': `1gm = ₹ ${goldRate['24kt']}`,
       Silver: '1Kg = ₹ 91,000.45',
       'Crude Oil': '₹ 4,500',
       Sensex: `₹ ${(sensexRes as any).data.data.pricecurrent.toLocaleString()}`,
