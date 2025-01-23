@@ -26,7 +26,9 @@ Frontend deployment:
 
 1. Checkout to `gh-pages` branch.
 2. Pull from `main` branch.
-3. Commit and Push to `gh-pages` branch.
+3. `npm run build-ghp`
+4. Commit and Push to `gh-pages` branch.
+
 
 Frontend URL: https://shivamarora1.github.io/stocdash/<br>
 Backend URL : https://stocdash-production.up.railway.app/
