@@ -3,10 +3,10 @@ import { RouterOutlet } from '@angular/router';
 import { QuickGlanceComponent } from './quick-glance/quick-glance.component';
 
 @Component({
-    selector: 'app-root',
-    imports: [RouterOutlet, QuickGlanceComponent],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss'
+  selector: 'app-root',
+  imports: [RouterOutlet, QuickGlanceComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'frontend';
