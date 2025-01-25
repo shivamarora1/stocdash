@@ -6,12 +6,11 @@ import { CommonModule } from '@angular/common';
 import { interval, Subscription } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
 @Component({
-  selector: 'app-quick-glance',
-  standalone: true,
-  imports: [ContainerComponent, CommonModule],
-  templateUrl: './quick-glance.component.html',
-  styleUrl: './quick-glance.component.scss',
-  providers: [QuickGlanceService],
+    selector: 'app-quick-glance',
+    imports: [ContainerComponent, CommonModule],
+    templateUrl: './quick-glance.component.html',
+    styleUrl: './quick-glance.component.scss',
+    providers: [QuickGlanceService]
 })
 export class QuickGlanceComponent implements OnInit, OnDestroy {
   availableOptions: QuickGlanceOptions = {};
