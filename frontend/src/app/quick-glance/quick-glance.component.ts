@@ -1,14 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ContainerComponent } from './container/container.component';
 import { QuickGlanceService } from './quick-glance.service';
 import { QuickGlanceOptions } from './quick-glance.interface';
 import { CommonModule } from '@angular/common';
 import { interval, Subscription } from 'rxjs';
+import { CardModule } from 'primeng/card';
 import { startWith, switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-quick-glance',
-  standalone: true,
-  imports: [ContainerComponent, CommonModule],
+  imports: [CommonModule, CardModule],
   templateUrl: './quick-glance.component.html',
   styleUrl: './quick-glance.component.scss',
   providers: [QuickGlanceService],

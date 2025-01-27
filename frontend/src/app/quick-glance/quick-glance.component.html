@@ -1,10 +1,5 @@
-<div class="container">
-  <div class="loader" *ngIf="isLoading"></div>
-  <div>
-    <app-container
-      *ngFor="let item of availableOptions | keyvalue"
-      [heading]="item.key"
-      [value]="item.value"
-    ></app-container>
-  </div>
+<div class="columns-2 sm:columns-3 md:columns-3 lg:columns-3 xl:columns-3 2xl:columns-6">
+  <p-card header="{{item.key}}" *ngFor="let item of availableOptions | keyvalue">
+    <p class="m-0">{{item.value}}</p>
+  </p-card>
 </div>
