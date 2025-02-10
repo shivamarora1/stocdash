@@ -43,3 +43,13 @@ Frontend deployment:
 
 Frontend URL: https://shivamarora1.github.io/stocdash/<br>
 Backend URL : https://stocdash-production.up.railway.app/
+
+
+------
+Running Postgres Locally
+```
+docker run --name some-postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
+
+Username: postgres
+Password: password
+```

@@ -1,0 +1,13 @@
+import { Module } from '@nestjs/common';
+import { IposController } from './ipos.controller';
+import { IposService } from './ipos.service';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Ipo } from './ipo.entity';
+
+@Module({
+  imports: [ConfigModule, TypeOrmModule.forFeature([Ipo])],
+  controllers: [IposController],
+  providers: [IposService],
+})
+export class IposModule {}
