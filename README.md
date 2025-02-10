@@ -53,3 +53,13 @@ docker run --name some-postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d po
 Username: postgres
 Password: password
 ```
+
+Run migration
+```
+npm run typeorm
+```
+
+Create new migration
+```
+npx typeorm migration:create ./migrations/CreateIpoSchema
+```
