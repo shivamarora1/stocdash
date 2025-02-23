@@ -18,7 +18,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm":"typeorm-ts-node-commonjs migration:run -d ormconfig.ts"
+    "typeorm": "typeorm-ts-node-commonjs migration:run -d ormconfig.ts"
   },
   "dependencies": {
     "@nestjs/axios": "^4.0.0",
@@ -29,6 +29,7 @@
     "@nestjs/typeorm": "^11.0.0",
     "axios": "^1.7.9",
     "dotenv": "^16.4.7",
+    "jsdom": "^26.0.0",
     "pg": "^8.13.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
@@ -40,6 +41,7 @@
     "@nestjs/testing": "^10.0.0",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.2",
+    "@types/jsdom": "^21.1.7",
     "@types/node": "^20.3.1",
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",

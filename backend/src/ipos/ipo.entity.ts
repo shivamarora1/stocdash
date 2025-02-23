@@ -41,27 +41,9 @@ export class Ipo {
   @Column({ name: 'minimum_investment', type: 'float' })
   minimumInvestment: number;
 
-  @Column({ name: 'issue_price', type: 'float' })
-  issuePrice: number;
-
-  @Column({ name: 'issue_size', type: 'float' })
-  issueSize: number;
-
   @Column({ name: 'face_value', type: 'float' })
   faceValue: number;
 
-  @Column({ name: 'total_share_offered', type: 'float' })
-  totalShareOffered: number;
-
-  @Column({ name: 'offered_to_public', type: 'float' })
-  offeredToPublic: number;
-
-  @Column({ type: 'varchar', length: 255, nullable: true })
-  sector: string;
-
-  @Column({ name: 'sub_sector', type: 'varchar', length: 255, nullable: true })
-  subSector: string;
-
-  @Column({ name: 'issue_type', type: 'varchar', length: 255, nullable: true })
-  issueType: string;
+  @Column({ name: 'symbol', type: 'float' })
+  symbol: string;
 }

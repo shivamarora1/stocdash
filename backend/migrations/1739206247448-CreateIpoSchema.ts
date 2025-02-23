@@ -17,14 +17,13 @@ export class CreateIpoSchema1739206247448 implements MigrationInterface {
     listing_Date timestamp,
     basis_Of_Allotment timestamp,
     minimum_Investment float,
-    issue_Price float,
-    issue_Size float,
     face_Value float,
     total_Share_Offered float,
     offered_To_Public float,
     sector varchar,
     sub_Sector varchar,
-    issue_Type varchar
+    issue_Type varchar,
+    symbol varchar
 )`,
     );
   }
