@@ -48,7 +48,7 @@ Backend URL : https://stocdash-production.up.railway.app/
 ------
 Running Postgres Locally
 ```
-docker run --name some-postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
+docker run --name stocdash-postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
 
 Username: postgres
 Password: password

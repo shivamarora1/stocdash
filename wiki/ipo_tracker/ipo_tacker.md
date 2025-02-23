@@ -26,16 +26,14 @@ CREATE TABLE ipo(
     close_date datetime,
     listing_date datetime,
     basis_of_allotment datetime,
-    lot_size number,
     minimum_investment float,
-    issue_price float,
-    issue_size float,
     face_value float,
     total_share_offered float,
     offered_to_public float,
     sector string,
     sub_sector string,
-    issue_type string
+    issue_type string,
+    symbol string
 )
 ```
 - [ ] Set up the PostGres.
