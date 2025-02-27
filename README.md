@@ -8,14 +8,15 @@ Featured Planned:
 1. IPO List<br>
 &nbsp;    1.1. Columns to show in IPO List:
 
-| IPO | Price    | Lot Price    | Suggestion | Review    | GMP    | % Subscribed    |
-| :-----: | :---: | :---: | :-----: | :---: | :---: | :---: |
+| IPO | Price    | Lot Price    | Suggestion | Review    | GMP    | % Subscribed    | Opening On | Closing On |
+| :-----: | :---: | :---: | :-----: | :---: | :---: | :---: | :---: | :---: |
+
+- Only show current opened IPO and not listed IPO.
+- Mark the IPO as favourite/ unfavourite , So that you can track status of IPO.
 
 2. Tech News
 3. Market News
 4. Sector wise companies table with their price.
-
-
 
 ---
 
@@ -42,3 +43,23 @@ Frontend deployment:
 
 Frontend URL: https://shivamarora1.github.io/stocdash/<br>
 Backend URL : https://stocdash-production.up.railway.app/
+
+
+------
+Running Postgres Locally
+```
+docker run --name stocdash-postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
+
+Username: postgres
+Password: password
+```
+
+Run migration
+```
+npm run typeorm
+```
+
+Create new migration
+```
+npx typeorm migration:create ./migrations/CreateIpoSchema
+```
