@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity('ipo')
 export class Ipo {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryColumn({ name: 'symbol' })
+  symbol: string;
 
   @Column({ type: 'varchar', length: 255 })
   name: string;
@@ -43,7 +43,4 @@ export class Ipo {
 
   @Column({ name: 'face_value', type: 'float' })
   faceValue: number;
-
-  @Column({ name: 'symbol', type: 'float' })
-  symbol: string;
 }

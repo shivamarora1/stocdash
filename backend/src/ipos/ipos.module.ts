@@ -5,7 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Ipo } from './ipo.entity';
 import { HttpModule } from '@nestjs/axios';
-import { BseService } from 'src/bse/bse/bse.service';
+import { BseService } from 'src/bse/bse.service';
 
 @Module({
   imports: [ConfigModule, HttpModule, TypeOrmModule.forFeature([Ipo])],

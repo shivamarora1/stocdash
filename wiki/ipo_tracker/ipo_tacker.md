@@ -14,30 +14,33 @@ Tasks:
 - [ ] Scrape the data from the web site, scrape all required params.
 ```
 CREATE TABLE ipo(
-    id serial,		
-    name string,
+    name varchar,
+    symbol varchar PRIMARY KEY,
     price float,
+    lot_Size float,
+    open_Date timestamp,
+    close_Date timestamp,
+    lot_Price float,
+    minimum_Investment float,
+    face_Value float,    
     gmp float,
-    lot_price float,
-    lot_size flat,
-    suggestion string,
-    review string,
-    open_date datetime,
-    close_date datetime,
-    listing_date datetime,
-    basis_of_allotment datetime,
-    minimum_investment float,
-    face_value float,
-    total_share_offered float,
-    offered_to_public float,
-    sector string,
-    sub_sector string,
-    issue_type string,
-    symbol string
+    suggestion varchar,
+    review varchar,
+    listing_Date timestamp,
+    basis_Of_Allotment timestamp
 )
 ```
-- [ ] Set up the PostGres.
-- [ ] Set up some ORM and migration script to store data to PostGres.
-- [ ] Schedule job to fetch and store data in postgres.
-- [ ] Backend to fetch stored data from database.
-- [ ] Frontend to display data along with mark as favourite button.
+- [X] Set up the PostGres.
+- [X] Set up some ORM and migration script to store data to PostGres.
+- [X] Schedule job to fetch and store data in postgres.
+- [X] Backend to fetch stored data from database.
+- [ ] Fetch GMP, Suggestion, Review and save it to database.
+- [ ] Frontend to display data along with mark as favorite button.
+
+
+
+----
+#### Work done:
+- Added Cron to fetch information about active ipos and save them in database.
+- Cron will run in every 12 hours.
+- Cron will upsert the current ipos information.

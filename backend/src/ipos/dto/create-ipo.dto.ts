@@ -1,6 +1,6 @@
 export class CreateIpoDto {
   name?: string;
-  symbol?: string;
+  symbol: string;
   price?: number;
   lotPrice?: number;
   openDate?: Date;
