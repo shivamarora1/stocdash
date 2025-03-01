@@ -63,3 +63,12 @@ Create new migration
 ```
 npx typeorm migration:create ./migrations/CreateIpoSchema
 ```
+
+-----
+UI responsiveness tested in these Devices:
+```
+iPhone 14 Pro Max = 360-480px width
+iPad Air = 768-992px width
+MacBook Pro 14 = 992-1200px width	
+Full HD Monitor = 1200-1400px+ width
+```

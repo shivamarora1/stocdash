@@ -14,6 +14,8 @@ import { Tooltip } from 'primeng/tooltip';
 })
 export class ActiveIposComponent implements OnInit {
   activeIpos: ActiveIpos = [];
+  tableSize: any = 'small';
+
 
   constructor(private iposService: IposService) {}
 
