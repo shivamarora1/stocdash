@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { Ipo } from './ipo.entity';
-import { Repository } from 'typeorm';
+import { Raw, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateIpoDto } from './dto/create-ipo.dto';
 import { BseService } from 'src/bse/bse.service';
@@ -16,6 +16,12 @@ export class IposService {
 
   findAll(): Promise<Ipo[]> {
     return this.ipoRepository.find();
+  }
+  findActiveIPOs(): Promise<Ipo[]> {
+    return this.ipoRepository.findBy({
+      openDate: Raw((alias) => `${alias} <= NOW()`),
+      closeDate: Raw((alias) => `${alias} > NOW()`),
+    });
   }
   @Cron(CronExpression.EVERY_12_HOURS)
   async handleIpoCron(date: Date = new Date()): Promise<CreateIpoDto[]> {
