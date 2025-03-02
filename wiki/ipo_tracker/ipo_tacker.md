@@ -35,7 +35,7 @@ CREATE TABLE ipo(
 - [X] Schedule job to fetch and store data in postgres.
 - [X] Backend to fetch stored data from database.
 - [ ] Fetch GMP, Suggestion, Review and save it to database.
-- [ ] Frontend to display data along with mark as favorite button.
+- [X] Frontend to display data along with mark as favorite button.
 
 
 
@@ -44,3 +44,4 @@ CREATE TABLE ipo(
 - Added Cron to fetch information about active ipos and save them in database.
 - Cron will run in every 12 hours.
 - Cron will upsert the current ipos information.
+- Active IPO are displayed on the dashboard. Active IPO = openDate < now() and closeDate > now()
