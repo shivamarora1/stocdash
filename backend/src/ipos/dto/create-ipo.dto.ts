@@ -9,7 +9,7 @@ export class CreateIpoDto {
   minimumInvestment?: number;
   faceValue?: number;
   gmp?: number;
-  suggestion?: string;
+  suggestion?: 'apply' | 'avoid' | 'may apply';
   review?: string;
   listingDate?: Date;
   basisOfAllotment?: Date;

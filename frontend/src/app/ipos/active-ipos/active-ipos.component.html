@@ -1,0 +1,57 @@
+<div class="columns-1">
+  <p-table
+    showGridlines
+    stripedRows
+    class="inline-block w-full"
+    [paginator]="true"
+    [rows]="5"
+    [value]="activeIpos"
+    [size]="tableSize"
+  >
+    <ng-template pTemplate="caption">
+      <h2 class="text-center">Active IPOs</h2>
+    </ng-template>
+    <ng-template #header>
+      <tr>
+        <th style="min-width: 130px">Name</th>
+        <th>Price</th>
+        <th>Investment</th>
+        <th style="min-width: 120px">Opening On</th>
+        <th style="min-width: 120px">Closing On</th>
+        <th>GMP</th>
+        <th>Suggestion</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-activeIpo>
+      <tr>
+        <td class="name-overflow-hide" pTooltip="{{ activeIpo.name }}">
+          {{ activeIpo.name }}
+        </td>
+        <td>{{ activeIpo.price }}</td>
+        <td>{{ activeIpo.minimumInvestment }}</td>
+        <td>{{ activeIpo.openDate | date : "dd MMM" }}</td>
+        <td>{{ activeIpo.closeDate | date : "dd MMM" }}</td>
+        <td>{{ activeIpo.gmp }}</td>
+        <td>
+          <p-tag
+            [severity]="
+              activeIpo.suggestion === 'apply'
+                ? 'success'
+                : activeIpo.suggestion === 'avoid'
+                ? 'danger'
+                : activeIpo.suggestion === 'may apply'
+                ? 'warn'
+                : 'danger'
+            "
+            value="{{ activeIpo.suggestion | uppercase }}"
+          />
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="7">No active IPOs</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

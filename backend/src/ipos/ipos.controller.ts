@@ -16,4 +16,9 @@ export class IposController {
     const ipoData = await this.ipoService.handleIpoCron(dateObj);
     return res.status(HttpStatus.OK).json(ipoData);
   }
+  @Get('active')
+  async getActiveIpos(@Res() res: Response) {
+    const activeIposData = await this.ipoService.findActiveIPOs();
+    return res.status(HttpStatus.OK).json(activeIposData);
+  }
 }
