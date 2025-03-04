@@ -27,13 +27,13 @@
         <td class="name-overflow-hide" pTooltip="{{ activeIpo.name }}">
           {{ activeIpo.name }}
         </td>
-        <td>{{ activeIpo.price }}</td>
-        <td>{{ activeIpo.minimumInvestment }}</td>
+        <td>{{ activeIpo.price  | currency: 'INR' }}</td>
+        <td>{{ activeIpo.minimumInvestment | currency: 'INR' }}</td>
         <td>{{ activeIpo.openDate | date : "dd MMM" }}</td>
         <td>{{ activeIpo.closeDate | date : "dd MMM" }}</td>
         <td>{{ activeIpo.gmp }}</td>
         <td>
-          <p-tag
+          <p-tag *ngIf="activeIpo.suggestion"
             [severity]="
               activeIpo.suggestion === 'apply'
                 ? 'success'
