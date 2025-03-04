@@ -22,7 +22,8 @@
         <th>Suggestion</th>
       </tr>
     </ng-template>
-    <ng-template #body let-activeIpo>
+
+    <ng-template #body let-activeIpo *ngIf="!isLoading">
       <tr>
         <td class="name-overflow-hide" pTooltip="{{ activeIpo.name }}">
           {{ activeIpo.name }}
@@ -49,10 +50,39 @@
         </td>
       </tr>
     </ng-template>
-    <ng-template pTemplate="emptymessage">
+
+    <ng-template pTemplate="emptymessage" *ngIf="!isLoading">
       <tr>
         <td colspan="7">No active IPOs</td>
       </tr>
     </ng-template>
+
+    <!-- Row loader starts -->
+    <ng-template #body *ngIf="isLoading">
+      <tr class="animate-pulse">
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+      </tr>
+    </ng-template>
+    <!-- Row loader ends -->
   </p-table>
 </div>

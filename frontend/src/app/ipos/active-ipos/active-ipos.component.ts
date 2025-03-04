@@ -8,7 +8,7 @@ import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-active-ipos',
-  imports: [CommonModule, TableModule,TagModule, Tooltip,CurrencyPipe],
+  imports: [CommonModule, TableModule, TagModule, Tooltip, CurrencyPipe],
   providers: [IposService],
   templateUrl: './active-ipos.component.html',
   styleUrl: './active-ipos.component.scss',
@@ -16,13 +16,14 @@ import { TagModule } from 'primeng/tag';
 export class ActiveIposComponent implements OnInit {
   activeIpos: ActiveIpos = [];
   tableSize: any = 'small';
-  
+  isLoading: boolean = true;
 
   constructor(private iposService: IposService) {}
 
   ngOnInit(): void {
-    this.iposService
-      .getActiveIpos()
-      .subscribe((iposData) => (this.activeIpos = iposData));
+    this.iposService.getActiveIpos().subscribe((iposData) => {
+      this.activeIpos = iposData;
+      this.isLoading = false;
+    });
   }
 }
