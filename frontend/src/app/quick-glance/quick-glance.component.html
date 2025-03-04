@@ -1,5 +1,22 @@
-<div class="columns-2 sm:columns-3 md:columns-3 lg:columns-3 xl:columns-3 2xl:columns-6">
-  <p-card header="{{item.key}}" *ngFor="let item of availableOptions | keyvalue">
-    <p class="m-0">{{item.value}}</p>
+<div
+  class="columns-2 sm:columns-3 md:columns-3 lg:columns-3 xl:columns-3 2xl:columns-6"
+  *ngIf="!isLoading"
+>
+  <p-card
+    header="{{ item.key }}"
+    *ngFor="let item of availableOptions | keyvalue"
+  >
+    <p class="m-0">{{ item.value }}</p>
   </p-card>
 </div>
+
+<!-- Loader -->
+<div class="flex" *ngIf="isLoading">
+  <p-card
+    class="w-1/2 sm:w-1/3 md:w-1/3 lg:w-1/3 xl:w-1/3 2xl:w-1/6 animate-pulse"
+  >
+    <div class="mb-4 m-0 h-4 bg-gray-800 rounded w-3/4 animate-pulse"></div>
+    <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+  </p-card>
+</div>
+<!-- End of Loader -->

@@ -36,6 +36,7 @@ CREATE TABLE ipo(
 - [X] Backend to fetch stored data from database.
 - [ ] Fetch GMP, Suggestion, Review and save it to database.
 - [X] Frontend to display data along with mark as favorite button.
+- [ ] Mark as favorite flow. 
 
 
 
