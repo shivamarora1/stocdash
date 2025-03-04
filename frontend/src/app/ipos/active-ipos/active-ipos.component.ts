@@ -16,7 +16,7 @@ import { TagModule } from 'primeng/tag';
 export class ActiveIposComponent implements OnInit {
   activeIpos: ActiveIpos = [];
   tableSize: any = 'small';
-
+  
 
   constructor(private iposService: IposService) {}
 

@@ -15,14 +15,13 @@ import { startWith, switchMap } from 'rxjs/operators';
 export class QuickGlanceComponent implements OnInit, OnDestroy {
   availableOptions: QuickGlanceOptions = {};
   subscription!: Subscription;
-  isLoading: boolean = false;
+  isLoading: boolean = true;
   constructor(private service: QuickGlanceService) {}
   ngOnInit(): void {
     this.subscription = interval(10000)
       .pipe(
         startWith(0),
         switchMap(() => {
-          this.isLoading = true;
           return this.service.getOptions();
         })
       )
