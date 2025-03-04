@@ -22,18 +22,20 @@
         <th>Suggestion</th>
       </tr>
     </ng-template>
-    <ng-template #body let-activeIpo>
+
+    <ng-template #body let-activeIpo *ngIf="!isLoading">
       <tr>
         <td class="name-overflow-hide" pTooltip="{{ activeIpo.name }}">
           {{ activeIpo.name }}
         </td>
-        <td>{{ activeIpo.price }}</td>
-        <td>{{ activeIpo.minimumInvestment }}</td>
+        <td>{{ activeIpo.price | currency : "INR" }}</td>
+        <td>{{ activeIpo.minimumInvestment | currency : "INR" }}</td>
         <td>{{ activeIpo.openDate | date : "dd MMM" }}</td>
         <td>{{ activeIpo.closeDate | date : "dd MMM" }}</td>
         <td>{{ activeIpo.gmp }}</td>
         <td>
           <p-tag
+            *ngIf="activeIpo.suggestion"
             [severity]="
               activeIpo.suggestion === 'apply'
                 ? 'success'
@@ -48,10 +50,39 @@
         </td>
       </tr>
     </ng-template>
-    <ng-template pTemplate="emptymessage">
+
+    <ng-template pTemplate="emptymessage" *ngIf="!isLoading">
       <tr>
         <td colspan="7">No active IPOs</td>
       </tr>
     </ng-template>
+
+    <!-- Row loader starts -->
+    <ng-template #body *ngIf="isLoading">
+      <tr class="animate-pulse">
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+      </tr>
+    </ng-template>
+    <!-- Row loader ends -->
   </p-table>
 </div>
