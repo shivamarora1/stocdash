@@ -58,7 +58,7 @@
     </ng-template>
 
     <!-- Row loader starts -->
-    <ng-template #body *ngIf="isLoading">
+    <ng-template pTemplate="emptymessage" *ngIf="isLoading">
       <tr class="animate-pulse">
         <td>
           <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
