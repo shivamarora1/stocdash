@@ -1,17 +1,18 @@
 import { Injectable } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
 import { Ipo } from './ipo.entity';
 import { Raw, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateIpoDto } from './dto/create-ipo.dto';
 import { BseService } from 'src/bse/bse.service';
 import { Cron, CronExpression } from '@nestjs/schedule';
+import { ChittorgarhService } from 'src/chittorgarh/chittorgarh.service';
+import { IpoDetailsWithGmp } from 'src/chittorgarh/chittorgarh.dto';
 @Injectable()
 export class IposService {
   constructor(
     @InjectRepository(Ipo) private ipoRepository: Repository<Ipo>,
     private readonly bseService: BseService,
-    private readonly httpService: HttpService,
+    private readonly chService: ChittorgarhService,
   ) {}
 
   findAll(): Promise<Ipo[]> {
@@ -27,6 +28,24 @@ export class IposService {
   async handleIpoCron(date: Date = new Date()): Promise<CreateIpoDto[]> {
     console.log(`running ipo cron: ${date}`);
     const ipoData: Array<CreateIpoDto> = await this.bseService.getOpenIpo(date);
+
+    const cIpoData: Array<IpoDetailsWithGmp> =
+      await this.chService.getCurrentIpos();
+
+    ipoData.forEach((i) => {
+      const match = cIpoData.find(
+        (c) => c.name.toLowerCase() === i.name.toLowerCase(),
+      );
+      if (match) {
+        Object.assign(i, {
+          gmp: match.gmp,
+          suggestion: match.suggestion,
+          review: match.review,
+          listingDate: match.tentativeListingDate,
+          basisOfAllotment: match.creditOfSharesToDemat,
+        });
+      }
+    });
 
     // * save or update new values.
     this.create(ipoData);
