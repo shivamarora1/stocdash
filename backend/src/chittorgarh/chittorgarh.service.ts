@@ -106,24 +106,30 @@ export class ChittorgarhService {
   }
 
   private async getIPOGmp(url): Promise<number> {
-    // Get IPO GMP detail from 3rd party URL...
-    const response = await firstValueFrom(this.httpService.get(url));
-    const data = await response.data;
-    const dom = new JSDOM(data);
-    const document = dom.window.document;
-    const ipoIdStr = document.querySelector('#main').textContent;
-    const match = ipoIdStr.match(/\/(\d+)"/);
-    let ipoId = '';
-    if (match) {
-      ipoId = match[1];
-      const apiRes = await firstValueFrom(
-        this.httpService.get(
-          `https://webnodejs.investorgain.com/cloud/ipo/ipo-gmp-read/${ipoId}/true/`,
-        ),
-      );
-      const apiJson = await apiRes.data;
-      return apiJson.ipoGmpData[0].gmp as number;
-    } else {
+    try {
+      // Get IPO GMP detail from 3rd party URL...
+      const response = await firstValueFrom(this.httpService.get(url));
+      const data = await response.data;
+      const dom = new JSDOM(data);
+      const document = dom.window.document;
+      const ipoIdStr = document.querySelector('#main').textContent;
+      const match = ipoIdStr.match(/\/(\d+)"/);
+      let ipoId = '';
+      if (match) {
+        ipoId = match[1];
+        const apiRes = await firstValueFrom(
+          this.httpService.get(
+            `https://webnodejs.investorgain.com/cloud/ipo/ipo-gmp-read/${ipoId}/true/`,
+          ),
+        );
+        const apiJson = await apiRes.data;
+        return apiJson.ipoGmpData[0].gmp as number;
+      } else {
+        console.log(`GMP data not found for IPO ${url}`);
+        return null;
+      }
+    } catch (e) {
+      console.error(`error in getting GMP for ${url}`);
       return null;
     }
   }
