@@ -47,3 +47,4 @@ CREATE TABLE ipo(
 - Cron will run in every 12 hours.
 - Cron will upsert the current ipos information.
 - Active IPO are displayed on the dashboard. Active IPO = openDate < now() and closeDate > now()
+- Chittorgarh api is used to fetch review and gmp details of ipo.
