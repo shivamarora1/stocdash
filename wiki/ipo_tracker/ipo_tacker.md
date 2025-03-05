@@ -34,10 +34,11 @@ CREATE TABLE ipo(
 - [X] Set up some ORM and migration script to store data to PostGres.
 - [X] Schedule job to fetch and store data in postgres.
 - [X] Backend to fetch stored data from database.
-- [ ] Fetch GMP, Suggestion, Review and save it to database.
+- [X] Fetch GMP, Suggestion, Review and save it to database.
 - [X] Frontend to display data along with mark as favorite button.
 - [ ] Mark as favorite flow. 
-
+- [ ] Use Chittorgarh api to fetch NSE SME also.
+- [ ] Test Cases.
 
 
 ----
