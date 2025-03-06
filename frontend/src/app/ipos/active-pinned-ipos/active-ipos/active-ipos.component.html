@@ -20,6 +20,7 @@
         <th style="min-width: 120px">Closing On</th>
         <th>GMP</th>
         <th>Suggestion</th>
+        <th></th>
       </tr>
     </ng-template>
 
@@ -28,8 +29,12 @@
         <td class="name-overflow-hide" pTooltip="{{ activeIpo.name }}">
           {{ activeIpo.name }}
         </td>
-        <td>{{ activeIpo.price | currency : "INR" }}</td>
-        <td>{{ activeIpo.minimumInvestment | currency : "INR" }}</td>
+        <td>{{ activeIpo.price | currency : "INR" : "symbol" : "1.0-0" }}</td>
+        <td>
+          {{
+            activeIpo.minimumInvestment | currency : "INR" : "symbol" : "1.0-0"
+          }}
+        </td>
         <td>{{ activeIpo.openDate | date : "dd MMM" }}</td>
         <td>{{ activeIpo.closeDate | date : "dd MMM" }}</td>
         <td>{{ activeIpo.gmp }}</td>
@@ -48,18 +53,25 @@
             value="{{ activeIpo.suggestion | uppercase }}"
           />
         </td>
-      </tr>
-    </ng-template>
-
-    <ng-template pTemplate="emptymessage" *ngIf="!isLoading">
-      <tr>
-        <td colspan="7">No active IPOs</td>
+        <td>
+          <button
+            (click)="onPinClick(activeIpo.symbol)"
+            pTooltip="Pin"
+            class="cursor-pointer pr-1 pl-1 hover:bg-stone-800 active:bg-stone-950 rounded-md"
+          >
+            📌
+          </button>
+        </td>
       </tr>
     </ng-template>
 
     <!-- Row loader starts -->
-    <ng-template pTemplate="emptymessage" *ngIf="isLoading">
-      <tr class="animate-pulse">
+    <ng-template pTemplate="emptymessage">
+      <tr *ngIf="!isLoading">
+        <td colspan="7">No active IPOs</td>
+      </tr>
+
+      <tr class="animate-pulse" *ngIf="isLoading">
         <td>
           <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
         </td>

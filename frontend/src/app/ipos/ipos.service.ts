@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { ActiveIpos } from './active-ipos/active-ipos.interface';
+import { ActiveIpos } from './active-pinned-ipos/active-ipos/active-ipos.interface';
 
 @Injectable({
   providedIn: 'root',

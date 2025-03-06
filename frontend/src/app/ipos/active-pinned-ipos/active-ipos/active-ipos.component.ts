@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { IposService } from '../ipos.service';
-import { TableModule } from 'primeng/table';
-import { CommonModule, CurrencyPipe } from '@angular/common';
+import { IposService } from '../../ipos.service';
 import { ActiveIpos } from './active-ipos.interface';
-import { Tooltip } from 'primeng/tooltip';
-import { TagModule } from 'primeng/tag';
+import { SharedModule } from '../../../shared.module';
 
 @Component({
   selector: 'app-active-ipos',
-  imports: [CommonModule, TableModule, TagModule, Tooltip, CurrencyPipe],
+  imports: [SharedModule],
   providers: [IposService],
   templateUrl: './active-ipos.component.html',
-  styleUrl: './active-ipos.component.scss',
+  styleUrl: '../active-pinned-ipos.component.scss',
 })
 export class ActiveIposComponent implements OnInit {
   activeIpos: ActiveIpos = [];
@@ -25,5 +22,8 @@ export class ActiveIposComponent implements OnInit {
       this.activeIpos = iposData;
       this.isLoading = false;
     });
+  }
+  onPinClick(ipoSymbol: string): void {
+    console.log(ipoSymbol);
   }
 }
