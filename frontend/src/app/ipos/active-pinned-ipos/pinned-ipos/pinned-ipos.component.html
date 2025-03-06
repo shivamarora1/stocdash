@@ -1,91 +1,74 @@
-<div class="columns-1">
-    <p-table
-      showGridlines
-      stripedRows
-      class="inline-block w-full"
-      [paginator]="true"
-      [rows]="5"
-      [value]="pinnedIpos"
-      [size]="tableSize"
-    >
-      <ng-template pTemplate="caption">
-        <h2 class="text-center">Pinned IPOs</h2>
-      </ng-template>
-      <ng-template #header>
-        <tr>
-          <th style="min-width: 130px">Name</th>
-          <th>Price</th>
-          <th>Investment</th>
-          <th style="min-width: 120px">Opening On</th>
-          <th style="min-width: 120px">Closing On</th>
-          <th>GMP</th>
-          <th>Suggestion</th>
-        </tr>
-      </ng-template>
-  
-      <ng-template #body let-pinnedIpo *ngIf="!isLoading">
-        <tr>
-          <td class="name-overflow-hide" pTooltip="{{ pinnedIpo.name }}">
-            {{ pinnedIpo.name }}
-          </td>
-          <td>{{ pinnedIpo.price | currency : "INR" : "symbol" : "1.0-0" }}</td>
-          <td>
-            {{
-              pinnedIpo.minimumInvestment | currency : "INR" : "symbol" : "1.0-0"
-            }}
-          </td>
-          <td>{{ pinnedIpo.openDate | date : "dd MMM" }}</td>
-          <td>{{ pinnedIpo.closeDate | date : "dd MMM" }}</td>
-          <td>{{ pinnedIpo.gmp }}</td>
-          <td>
-            <p-tag
-              *ngIf="pinnedIpo.suggestion"
-              [severity]="
-                pinnedIpo.suggestion === 'apply'
-                  ? 'success'
-                  : pinnedIpo.suggestion === 'avoid'
-                  ? 'danger'
-                  : pinnedIpo.suggestion === 'may apply'
-                  ? 'warn'
-                  : 'danger'
-              "
-              value="{{ pinnedIpo.suggestion | uppercase }}"
-            />
-          </td>
-        </tr>
-      </ng-template>
-  
-      <!-- Row loader starts -->
-      <ng-template pTemplate="emptymessage">
-        <tr *ngIf="!isLoading">
-          <td colspan="7">No pinned 📌 IPOs</td>
-        </tr>
-  
-        <tr class="animate-pulse" *ngIf="isLoading">
-          <td>
-            <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
-          </td>
-          <td>
-            <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
-          </td>
-          <td>
-            <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
-          </td>
-          <td>
-            <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
-          </td>
-          <td>
-            <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
-          </td>
-          <td>
-            <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
-          </td>
-          <td>
-            <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
-          </td>
-        </tr>
-      </ng-template>
-      <!-- Row loader ends -->
-    </p-table>
-  </div>
-  
+<div class="columns-1 mt-10 md:mt-0">
+  <p-table
+    showGridlines
+    stripedRows
+    class="inline-block w-full"
+    [paginator]="true"
+    [rows]="5"
+    [value]="pinnedIpos"
+    [size]="tableSize"
+  >
+    <ng-template pTemplate="caption">
+      <h2 class="text-center">Pinned IPOs</h2>
+    </ng-template>
+    <ng-template #header>
+      <tr>
+        <th style="min-width: 130px">Name</th>
+        <th>Investment</th>
+        <th>GMP</th>
+        <th style="min-width: 100px">Closing On</th>
+        <th style="min-width: 120px">Allotment On</th>
+        <th style="min-width: 100px">Listing On</th>
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-pinnedIpo *ngIf="!isLoading">
+      <tr>
+        <td class="name-overflow-hide" pTooltip="{{ pinnedIpo.name }}">
+          {{ pinnedIpo.name }}
+        </td>
+        <td>
+          {{
+            pinnedIpo.minimumInvestment | currency : "INR" : "symbol" : "1.0-0"
+          }}
+        </td>
+        <td>{{ pinnedIpo.gmp }}</td>
+        <td>{{ pinnedIpo.closeDate | date : "dd MMM" }}</td>
+        <td>{{ pinnedIpo.basisOfAllotment | date : "dd MMM" }}</td>
+        <td>{{ pinnedIpo.listingDate | date : "dd MMM" }}</td>
+      </tr>
+    </ng-template>
+
+    <!-- Row loader starts -->
+    <ng-template pTemplate="emptymessage">
+      <tr *ngIf="!isLoading">
+        <td colspan="6">No pinned 📌 IPOs</td>
+      </tr>
+
+      <tr class="animate-pulse" *ngIf="isLoading">
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
+      </tr>
+    </ng-template>
+    <!-- Row loader ends -->
+  </p-table>
+</div>

@@ -1,6 +1,6 @@
 export type ActiveIpos = Array<ActiveIpo>;
 
-interface ActiveIpo {
+export interface ActiveIpo {
     name: string;
     symbol: string;
     price: number;

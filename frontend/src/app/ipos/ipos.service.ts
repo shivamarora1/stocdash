@@ -14,4 +14,7 @@ export class IposService {
   getActiveIpos(): Observable<ActiveIpos> {
     return this.httpClient.get<ActiveIpos>(`${this.BASE_URL}/ipos/active`);
   }
+  getToBeListedIpos(): Observable<ActiveIpos> {
+    return this.httpClient.get<ActiveIpos>(`${this.BASE_URL}/ipos/to-be-listed`);
+  }
 }

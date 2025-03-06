@@ -20,8 +20,14 @@ export class IposService {
   }
   findActiveIPOs(): Promise<Ipo[]> {
     return this.ipoRepository.findBy({
-      openDate: Raw((alias) => `${alias} <= NOW()`),
-      closeDate: Raw((alias) => `${alias} > NOW()`),
+      openDate: Raw((alias) => `${alias} <= date(NOW())`),
+      closeDate: Raw((alias) => `date(NOW()) <= ${alias} `),
+    });
+  }
+  findToBeListedIPOs(): Promise<Ipo[]> {
+    return this.ipoRepository.findBy({
+      openDate: Raw((alias) => `${alias} <= date(NOW())`),
+      listingDate: Raw((alias) => `date(NOW()) <= ${alias} `),
     });
   }
   @Cron(CronExpression.EVERY_12_HOURS)

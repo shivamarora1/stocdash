@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IposService } from '../../ipos.service';
-import { ActiveIpos } from './active-ipos.interface';
+import { ActiveIpo, ActiveIpos } from './active-ipos.interface';
 import { SharedModule } from '../../../shared.module';
+import { CookieService } from 'ngx-cookie-service';
+import { getPinIpoCookieName } from '../utils';
 
 @Component({
   selector: 'app-active-ipos',
@@ -14,16 +16,37 @@ export class ActiveIposComponent implements OnInit {
   activeIpos: ActiveIpos = [];
   tableSize: any = 'small';
   isLoading: boolean = true;
+  @Output() pinClicked = new EventEmitter<ActiveIpo>();
 
-  constructor(private iposService: IposService) {}
+  constructor(
+    private iposService: IposService,
+    private cookieService: CookieService
+  ) {}
 
   ngOnInit(): void {
     this.iposService.getActiveIpos().subscribe((iposData) => {
-      this.activeIpos = iposData;
+      this.activeIpos = iposData.filter(
+        (ipo) => !this.cookieService.get(getPinIpoCookieName(ipo.symbol))
+      );
       this.isLoading = false;
     });
   }
   onPinClick(ipoSymbol: string): void {
-    console.log(ipoSymbol);
+    // * Setting cookie for pinned ipos.
+    // * Later we can store this in database.
+
+    const pinnedIpo = this.activeIpos.find((i) => i.symbol === ipoSymbol);
+    if (pinnedIpo) {
+
+      const listingDate = new Date(pinnedIpo.listingDate);
+      listingDate.setDate(listingDate.getDate() + 1);
+      this.cookieService.set(
+        getPinIpoCookieName(ipoSymbol),
+        'true',
+        listingDate
+      );
+      this.activeIpos = this.activeIpos.filter((e) => e.symbol !== ipoSymbol);
+      this.pinClicked.emit(pinnedIpo);
+    }
   }
 }

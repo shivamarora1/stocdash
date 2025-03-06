@@ -68,10 +68,13 @@
     <!-- Row loader starts -->
     <ng-template pTemplate="emptymessage">
       <tr *ngIf="!isLoading">
-        <td colspan="7">No active IPOs</td>
+        <td colspan="8">No active IPOs</td>
       </tr>
 
       <tr class="animate-pulse" *ngIf="isLoading">
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
         <td>
           <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
         </td>
