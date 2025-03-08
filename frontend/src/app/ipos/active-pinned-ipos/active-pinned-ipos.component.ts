@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 @Component({
   selector: 'app-active-pinned-ipos',
   imports: [ActiveIposComponent, PinnedIposComponent],
-  templateUrl: './active-pinned-ipos.component.html'
+  templateUrl: './active-pinned-ipos.component.html',
 })
 export class ActivePinnedIposComponent {
   pinIpoSubject: Subject<ActiveIpo> = new Subject();

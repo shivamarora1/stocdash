@@ -16,6 +16,8 @@ export class ActiveIposComponent implements OnInit {
   activeIpos: ActiveIpos = [];
   tableSize: any = 'small';
   isLoading: boolean = true;
+  visible: boolean = false;
+  dialogInfo: { name?: string; review?: string } = {};
   @Output() pinClicked = new EventEmitter<ActiveIpo>();
 
   constructor(
@@ -37,7 +39,6 @@ export class ActiveIposComponent implements OnInit {
 
     const pinnedIpo = this.activeIpos.find((i) => i.symbol === ipoSymbol);
     if (pinnedIpo) {
-
       const listingDate = new Date(pinnedIpo.listingDate);
       listingDate.setDate(listingDate.getDate() + 1);
       this.cookieService.set(
@@ -47,6 +48,23 @@ export class ActiveIposComponent implements OnInit {
       );
       this.activeIpos = this.activeIpos.filter((e) => e.symbol !== ipoSymbol);
       this.pinClicked.emit(pinnedIpo);
+    }
+  }
+  onReviewClick(ipoName: string, review: string) {
+    this.visible = true;
+    this.dialogInfo = { name: ipoName, review: this.format(review) };
+  }
+  format(review?: string) {
+    if (review) {
+      const val = review
+        .replace('Read detail review...', '')
+        .split('.')
+        .map((e) => (e.trim() ? '• ' + e + '.' : null))
+        .join('<br>');
+      console.log(val);
+      return val;
+    } else {
+      return '';
     }
   }
 }

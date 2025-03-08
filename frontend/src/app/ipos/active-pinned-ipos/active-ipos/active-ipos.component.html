@@ -21,6 +21,7 @@
         <th>GMP</th>
         <th>Suggestion</th>
         <th></th>
+        <th></th>
       </tr>
     </ng-template>
 
@@ -62,16 +63,29 @@
             📌
           </button>
         </td>
+        <td>
+          <button
+            *ngIf="activeIpo.review"
+            (click)="onReviewClick(activeIpo.name,activeIpo.review)"
+            pTooltip="Review"
+            class="cursor-pointer pr-1 pl-1 hover:bg-stone-800 active:bg-stone-950 rounded-md"
+          >
+            👁️‍🗨️
+          </button>
+        </td>
       </tr>
     </ng-template>
 
     <!-- Row loader starts -->
     <ng-template pTemplate="emptymessage">
       <tr *ngIf="!isLoading">
-        <td colspan="8">No active IPOs</td>
+        <td colspan="9">No active IPOs</td>
       </tr>
 
       <tr class="animate-pulse" *ngIf="isLoading">
+        <td>
+          <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
+        </td>
         <td>
           <div class="m-0 h-4 bg-gray-800 rounded w-full animate-pulse"></div>
         </td>
@@ -101,3 +115,13 @@
     <!-- Row loader ends -->
   </p-table>
 </div>
+
+<p-dialog [(visible)]="visible" [modal]="true" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+  <ng-template #header>
+    <div class="inline-flex items-center justify-center gap-2">
+      <span class="font-bold whitespace-nowrap">{{dialogInfo.name}}</span>
+    </div>
+  </ng-template>
+  <div class="" [innerHtml]="dialogInfo.review">
+  </div>
+</p-dialog>

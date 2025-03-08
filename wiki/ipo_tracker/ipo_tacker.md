@@ -36,7 +36,7 @@ CREATE TABLE ipo(
 - [X] Backend to fetch stored data from database.
 - [X] Fetch GMP, Suggestion, Review and save it to database.
 - [X] Frontend to display data along with mark as favorite button.
-- [ ] Mark as favorite flow. 
+- [X] Mark as favorite flow. 
 - [ ] Use Chittorgarh api to fetch NSE SME also.
 - [ ] Test Cases.
 
@@ -48,3 +48,5 @@ CREATE TABLE ipo(
 - Cron will upsert the current ipos information.
 - Active IPO are displayed on the dashboard. Active IPO = openDate < now() and closeDate > now()
 - Chittorgarh api is used to fetch review and gmp details of ipo.
+- Section to mark ipo as favorite.
+- Currently favorite ipo are stored in cookie, later they can put as part of database.
