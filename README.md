@@ -1,22 +1,10 @@
 TODO:
+1. Fetch values in background and save them in storage for later retrieval.
 
-1. Responsive Design.
-2. Use same DTO interface for backend and frontend. Using some sort of common modules.
-3. Use prebuild theme for angular frontend.
-4. Fetch values in background and save them in storage for later retrieval.
 Featured Planned:
-1. IPO List<br>
-&nbsp;    1.1. Columns to show in IPO List:
-
-| IPO | Price    | Lot Price    | Suggestion | Review    | GMP    | % Subscribed    | Opening On | Closing On |
-| :-----: | :---: | :---: | :-----: | :---: | :---: | :---: | :---: | :---: |
-
-- Only show current opened IPO and not listed IPO.
-- Mark the IPO as favourite/ unfavourite , So that you can track status of IPO.
-
-2. Tech News
-3. Market News
-4. Sector wise companies table with their price.
+1. Tech News
+2. Market News
+3. Sector wise companies table with their price.
 
 ---
 
