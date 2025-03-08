@@ -21,4 +21,9 @@ export class IposController {
     const activeIposData = await this.ipoService.findActiveIPOs();
     return res.status(HttpStatus.OK).json(activeIposData);
   }
+  @Get('to-be-listed')
+  async getToBeListedIpos(@Res() res: Response) {
+    const toBeListedIposData = await this.ipoService.findToBeListedIPOs();
+    return res.status(HttpStatus.OK).json(toBeListedIposData);
+  }
 }

@@ -34,10 +34,11 @@ CREATE TABLE ipo(
 - [X] Set up some ORM and migration script to store data to PostGres.
 - [X] Schedule job to fetch and store data in postgres.
 - [X] Backend to fetch stored data from database.
-- [ ] Fetch GMP, Suggestion, Review and save it to database.
+- [X] Fetch GMP, Suggestion, Review and save it to database.
 - [X] Frontend to display data along with mark as favorite button.
-- [ ] Mark as favorite flow. 
-
+- [X] Mark as favorite flow. 
+- [ ] Use Chittorgarh api to fetch NSE SME also.
+- [ ] Test Cases.
 
 
 ----
@@ -46,3 +47,6 @@ CREATE TABLE ipo(
 - Cron will run in every 12 hours.
 - Cron will upsert the current ipos information.
 - Active IPO are displayed on the dashboard. Active IPO = openDate < now() and closeDate > now()
+- Chittorgarh api is used to fetch review and gmp details of ipo.
+- Section to mark ipo as favorite.
+- Currently favorite ipo are stored in cookie, later they can put as part of database.

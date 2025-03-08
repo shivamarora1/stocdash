@@ -1,3 +1,4 @@
+export type IpoSuggestion = 'apply' | 'avoid' | 'may apply';
 export class CreateIpoDto {
   name?: string;
   symbol: string;
@@ -9,7 +10,7 @@ export class CreateIpoDto {
   minimumInvestment?: number;
   faceValue?: number;
   gmp?: number;
-  suggestion?: 'apply' | 'avoid' | 'may apply';
+  suggestion?: IpoSuggestion;
   review?: string;
   listingDate?: Date;
   basisOfAllotment?: Date;
