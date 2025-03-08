@@ -61,7 +61,6 @@ export class ActiveIposComponent implements OnInit {
         .split('.')
         .map((e) => (e.trim() ? '• ' + e + '.' : null))
         .join('<br>');
-      console.log(val);
       return val;
     } else {
       return '';
