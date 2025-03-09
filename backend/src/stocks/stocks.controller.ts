@@ -1,23 +1,11 @@
 import { Controller, Get, HttpStatus, Param, Res } from '@nestjs/common';
 import { Response } from 'express';
 import { StocksService, BS_NIFTY, BS_SENSEX } from './stocks.service';
-import { extractString, formatNumberToEnglish } from 'src/utils/string.utils';
+import { extractString, formatNumberToEnglish } from '../utils/string.utils';
 
 @Controller('stocks')
 export class StocksController {
   constructor(private readonly stockService: StocksService) {}
-
-  @Get('indian-indices/:indices')
-  async getIndianIndices(
-    @Param('indices') indices: string,
-    @Res() res: Response,
-  ) {
-    console.log(indices);
-    const idxResponse = await this.stockService.getIndianIndicesFeed(indices);
-    console.log(idxResponse);
-
-    return res.status(HttpStatus.OK).json([{ input: indices }]);
-  }
 
   @Get('options')
   async getOptions(@Res() res: Response) {
