@@ -3,10 +3,10 @@ import { Ipo } from './ipo.entity';
 import { Raw, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateIpoDto } from './dto/create-ipo.dto';
-import { BseService } from 'src/bse/bse.service';
+import { BseService } from '../bse/bse.service';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import { ChittorgarhService } from 'src/chittorgarh/chittorgarh.service';
-import { IpoDetailsWithGmp } from 'src/chittorgarh/chittorgarh.dto';
+import { ChittorgarhService } from '../chittorgarh/chittorgarh.service';
+import { IpoDetailsWithGmp } from '../chittorgarh/chittorgarh.dto';
 @Injectable()
 export class IposService {
   constructor(

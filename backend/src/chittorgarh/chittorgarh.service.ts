@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { JSDOM } from 'jsdom';
 import { IpoDetail, IpoDetailsWithGmp, IpoStatus } from './chittorgarh.dto';
 import { firstValueFrom } from 'rxjs';
-import { IpoSuggestion } from 'src/ipos/dto/create-ipo.dto';
+import { IpoSuggestion } from '../ipos/dto/create-ipo.dto';
 
 @Injectable()
 export class ChittorgarhService {

@@ -1,4 +1,4 @@
-import { Controller, Get, HttpStatus, Param, Res } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Res } from '@nestjs/common';
 import { Response } from 'express';
 import { StocksService, BS_NIFTY, BS_SENSEX } from './stocks.service';
 import { extractString, formatNumberToEnglish } from '../utils/string.utils';
