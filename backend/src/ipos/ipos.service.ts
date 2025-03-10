@@ -40,7 +40,9 @@ export class IposService {
 
     ipoData.forEach((i) => {
       const match = cIpoData.find(
-        (c) => c.name.toLowerCase() === i.name.toLowerCase(),
+        (c) =>
+          c.name.toLowerCase() ===
+          i.name.toLowerCase().replace('ltd', 'limited'),
       );
       if (match) {
         Object.assign(i, {
