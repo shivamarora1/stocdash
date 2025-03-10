@@ -32,7 +32,7 @@ Frontend deployment:
 
 
 Frontend URL: https://shivamarora1.github.io/stocdash/<br>
-Backend URL : https://stocdash-production.up.railway.app/
+Backend URL : https://stupid-phyllys-coder-dragon-8792cae1.koyeb.app/
 
 
 ------
