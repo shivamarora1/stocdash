@@ -1,8 +1,8 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { JSDOM } from 'jsdom';
-import { CreateIpoDto } from 'src/ipos/dto/create-ipo.dto';
-import { isSameDay } from 'src/utils/date.utils';
+import { CreateIpoDto } from '../ipos/dto/create-ipo.dto';
+import { isSameDay } from '../utils/date.utils';
 
 @Injectable()
 export class BseService {
