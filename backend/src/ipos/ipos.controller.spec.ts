@@ -11,7 +11,6 @@ import { IpoSuggestion } from './dto/create-ipo.dto';
 
 describe('IposController', () => {
   let controller: IposController;
-  let service: IposService;
   let mockIpoRepo: any;
   let mockedBseService: BseService;
   let mockedChService: ChittorgarhService;
@@ -40,7 +39,6 @@ describe('IposController', () => {
     }).compile();
 
     controller = module.get<IposController>(IposController);
-    service = module.get<IposService>(IposService);
     mockedBseService = module.get<BseService>(BseService);
     mockedChService = module.get<ChittorgarhService>(ChittorgarhService);
     mockIpoRepo = module.get(getRepositoryToken(Ipo));

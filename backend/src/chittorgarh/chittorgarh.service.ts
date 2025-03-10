@@ -128,7 +128,7 @@ export class ChittorgarhService {
         console.log(`GMP data not found for IPO ${url}`);
         return null;
       }
-    } catch (e) {
+    } catch {
       console.error(`error in getting GMP for ${url}`);
       return null;
     }
