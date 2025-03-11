@@ -39,11 +39,15 @@ export class IposService {
       await this.chService.getCurrentIpos();
 
     ipoData.forEach((i) => {
-      const match = cIpoData.find(
-        (c) =>
-          c.name.toLowerCase() ===
-          i.name.toLowerCase().replace('ltd', 'limited'),
-      );
+      const match = cIpoData.find((c) => {
+        return (
+          c.name
+            .toLowerCase()
+            .replaceAll(' ', '')
+            .replaceAll(/\u00a0/g, '') ===
+          i.name.toLowerCase().replaceAll(' ', '').replace('ltd', 'limited')
+        );
+      });
       if (match) {
         Object.assign(i, {
           gmp: match.gmp,

@@ -199,6 +199,68 @@ describe('IposController', () => {
       expect(mockIpoRepo.save).toHaveBeenCalled();
     });
 
+    it('should return correct data if it has special characters', async () => {
+      const resMock = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn().mockReturnThis(),
+      } as unknown as Response;
+      mockIpoRepo.create.mockReturnValue({});
+      const bseResponse = [
+        {
+          symbol: 'PSPL',
+          name: 'PDP  SHIPPING & PROJECTS LTD',
+          price: 135,
+          lotPrice: 135000,
+          lotSize: 1000,
+          openDate: new Date('2025-03-09T18:30:00.000Z'),
+          closeDate: new Date('2025-03-11T18:30:00.000Z'),
+          minimumInvestment: 135000,
+          faceValue: 10,
+        },
+      ];
+      const chResponse = [
+        {
+          openDate: new Date(),
+          closeDate: new Date(),
+          tentative_allotment: new Date(),
+          initiationOfRefunds: new Date(),
+          creditOfSharesToDemat: new Date('2025-03-21T18:30:00.000Z'),
+          tentativeListingDate: new Date('2025-03-21T18:30:00.000Z'),
+          suggestion: 'avoid' as IpoSuggestion,
+          review: 'Good IPO',
+          gmp: 0,
+          name: 'PDP SHIPPING & PROJECTS \u00A0 Limited',
+          gmpUrl: 'https://www.google.com',
+        },
+      ];
+
+      const expectResponse = [
+        {
+          symbol: 'PSPL',
+          name: 'PDP  SHIPPING & PROJECTS LTD',
+          price: 135,
+          lotPrice: 135000,
+          lotSize: 1000,
+          openDate: new Date('2025-03-09T18:30:00.000Z'),
+          closeDate: new Date('2025-03-11T18:30:00.000Z'),
+          minimumInvestment: 135000,
+          faceValue: 10,
+          suggestion: 'avoid' as IpoSuggestion,
+          review: 'Good IPO',
+          gmp: 0,
+          listingDate: new Date('2025-03-21T18:30:00.000Z'),
+          basisOfAllotment: new Date('2025-03-21T18:30:00.000Z'),
+        },
+      ];
+      jest.spyOn(mockedBseService, 'getOpenIpo').mockResolvedValue(bseResponse);
+      jest
+        .spyOn(mockedChService, 'getCurrentIpos')
+        .mockResolvedValue(chResponse);
+      await controller.getIpos(new Date(), resMock);
+      expect(resMock.json).toHaveBeenCalledWith(expectResponse);
+      expect(mockIpoRepo.save).toHaveBeenCalled();
+    });
+
     it('should return correct data if chittorgarh has multiple list', async () => {
       const resMock = {
         status: jest.fn().mockReturnThis(),
