@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@layer theme, tailwind-base, primeng, tailwind-utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(tailwind-base); 
+@import "tailwindcss/utilities.css" layer(tailwind-utilities);
+
+@layer primeng {
+
+}
+
+.color-midnight {
+  background-color: #18181b;
+}
